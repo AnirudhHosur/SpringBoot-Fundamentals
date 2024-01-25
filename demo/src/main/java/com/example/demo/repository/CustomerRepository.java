@@ -33,4 +33,27 @@ public class CustomerRepository {
         list.add(c);
         return c;
     }
+
+    public Customer update(int id,Customer customer) {
+        for(Customer c: list) {
+            if (c.getId() == id) {
+                c.setAddress(customer.getAddress());
+                c.setName(customer.getName());
+                c.setAge(customer.getAge());
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public String delete(int id) {
+        for (Customer c: list) {
+            if (c.getId() == id) {
+                list.remove(c);
+                return "Customer with id " + id + " has been deleted.";
+            }
+
+        }
+        return null;
+    }
 }

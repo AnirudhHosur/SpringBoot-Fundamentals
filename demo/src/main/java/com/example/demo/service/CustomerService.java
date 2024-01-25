@@ -25,4 +25,11 @@ public class CustomerService {
         return customerRepository.getAllCustomers();
     }
 
+    public Customer updateCustomer(int id,Customer customer) {
+        return customerRepository.update(id,customer);
+    }
+
+    public String deleteCustomer(int customerId) {
+        return customerRepository.delete(customerId);
+    }
 }
