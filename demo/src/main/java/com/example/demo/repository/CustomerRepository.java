@@ -18,7 +18,7 @@ public class CustomerRepository {
     public Customer findById(int id) {
         for(Customer c: list) {
             if(c.getId() == id) {
-                return list.get(id);
+                return c;
             }
         }
         return null;
