@@ -4,6 +4,7 @@ import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 // This comment was added by Joel
 
 @RestController
-@RequestMapping("/api/v1/customers")
+@RequestMapping("/api")
 public class Controller {
 
    @Autowired
@@ -34,6 +35,13 @@ public class Controller {
     @GetMapping("/{customerId}")
     public Customer getCustomerById(@PathVariable int customerId) {
         return customerService.findById(customerId);
+    }
+
+    @GetMapping("/callPublicAPI")
+    private String getPublicAPI() {
+        String url = "https://catfact.ninja/fact";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(url, String.class);
     }
 
     // Update an existing customer
