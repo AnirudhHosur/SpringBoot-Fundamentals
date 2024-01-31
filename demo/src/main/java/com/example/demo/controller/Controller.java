@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Cat;
 import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,7 @@ public class Controller {
 
     @GetMapping("/callPublicAPI")
     private String getPublicAPI() {
-        String url = "https://catfact.ninja/fact";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(url, String.class);
+        return customerService.getPublicAPI();
     }
 
     // Update an existing customer
