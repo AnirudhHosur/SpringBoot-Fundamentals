@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogService {
@@ -20,5 +21,9 @@ public class BlogService {
     public String saveBlog(Blog blog) {
         repository.save(blog);
         return "Blog Saved";
+    }
+
+    public Optional<Blog> getBlogById(int id) {
+        return repository.findById(id);
     }
 }

@@ -3,12 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.entity.Blog;
 import com.example.demo.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class BlogController {
@@ -19,6 +17,11 @@ public class BlogController {
     @GetMapping("/blogs")
     public List<Blog> getAllBlogs() {
         return blogService.getAllBlogs();
+    }
+
+    @GetMapping("/blog/{id}")
+    public Optional<Blog> getById(@PathVariable int id) {
+        return blogService.getBlogById(id);
     }
 
     @PostMapping("/save")
